@@ -4,15 +4,15 @@ jobs:
   slackNotification:
     name: Slack Notification
     runs-on: ubuntu-latest
+    env:
+      GITHUB_ACTOR: ${{ env.GITHUB_ACTOR }}
     steps:
       - uses: actions/checkout@v2
-      - name: List of the GitHub Actions environment variables
-        run: env
-      - name: "Set GITHUB_ACTOR"
-        run: |
-          echo "GITHUB_ACTOR=$GITHUB_ACTOR" >> $GITHUB_ENV
+#      - name: "Set GITHUB_ACTOR"
+#        run: |
+#          echo "GITHUB_ACTOR=$GITHUB_ACTOR" >> $GITHUB_ENV
       - name: Try to fail
-        run: exit 1 # Cause the step to fail
+        run: exit 1 # Cause the step to fail to remove
       - name: Slack Notification
         if: ${{ failure() }}
         uses: rtCamp/action-slack-notify@v2
@@ -21,4 +21,4 @@ jobs:
           SLACK_USERNAME: "CI-Checker"
           SLACK_COLOR: ${{ job.status }}
           SLACK_ICON: https://www.laboutiqueofficielle.com/favicon-114x114.png
-          SLACK_MESSAGE: "Test ${{ env.GITHUB_ACTOR }} @damien.odon"
+          SLACK_MESSAGE: "@${{ env.GITHUB_ACTOR }} your last CI just failed"
