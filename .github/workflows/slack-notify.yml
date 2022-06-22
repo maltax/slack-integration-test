@@ -4,13 +4,11 @@ jobs:
   slackNotification:
     name: Slack Notification
     runs-on: ubuntu-latest
-    env:
-      GITHUB_ACTOR: $GITHUB_ACTOR
     steps:
       - uses: actions/checkout@v2
-#      - name: "Set GITHUB_ACTOR"
-#        run: |
-#          echo "GITHUB_ACTOR=$GITHUB_ACTOR" >> $GITHUB_ENV
+      - name: "Set ENV var"
+        run: |
+          echo "GITHUB_ACTOR=$GITHUB_ACTOR" >> $GITHUB_ENV
       - name: Try to fail
         run: exit 1 # Cause the step to fail to remove
       - name: Slack Notification
