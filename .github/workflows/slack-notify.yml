@@ -8,6 +8,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: List of the GitHub Actions environment variables
         run: env
+      run: |
+        echo "GITHUB_ACTOR=${{ env.GITHUB_ACTOR }}" >> $GITHUB_ENV
       - name: Try to fail
         run: exit 1 # Cause the step to fail
       - name: Slack Notification
