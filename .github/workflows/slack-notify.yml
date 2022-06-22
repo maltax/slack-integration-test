@@ -8,9 +8,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: List of the GitHub Actions environment variables
         run: env
-#      - name: "Set GITHUB_ACTOR"
-#        run: |
-#          echo "GITHUB_ACTOR=$GITHUB_ACTOR" >> $GITHUB_ENV
+      - name: "Set GITHUB_ACTOR"
+        run: |
+          echo "GITHUB_ACTOR=$GITHUB_ACTOR" >> $GITHUB_ENV
       - name: Try to fail
         run: exit 1 # Cause the step to fail
       - name: Slack Notification
@@ -21,4 +21,4 @@ jobs:
           SLACK_USERNAME: "CI-Checker"
           SLACK_COLOR: ${{ job.status }}
           SLACK_ICON: https://www.laboutiqueofficielle.com/favicon-114x114.png
-          SLACK_MESSAGE: "Test ${{ env.GITHUB_ACTOR }}"
+          SLACK_MESSAGE: "Test ${{ env.GITHUB_ACTOR }} @damien.odon"
