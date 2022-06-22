@@ -16,4 +16,4 @@ jobs:
           SLACK_USERNAME: "CI-Checker"
           SLACK_COLOR: ${{ job.status }}
           SLACK_ICON: https://www.laboutiqueofficielle.com/favicon-114x114.png
-          SLACK_MESSAGE: "The operating system on the runner is $env:RUNNER_OS."
+          SLACK_MESSAGE: "The operating system on the runner is ${{env:RUNNER_OS}}."
