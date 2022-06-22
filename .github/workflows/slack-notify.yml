@@ -1,0 +1,22 @@
+on: push
+name: Slack Notification Demo
+jobs:
+  slackNotification:
+    name: Slack Notification
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: "Set GITHUB_ACTOR"
+        run: |
+          echo "GITHUB_ACTOR=$GITHUB_ACTOR" >> $GITHUB_ENV
+      - name: Try to fail
+        run: exit 1 # Cause the step to fail
+      - name: Slack Notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_USERNAME: "CI-Checker"
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_ICON: https://www.laboutiqueofficielle.com/favicon-114x114.png
+          SLACK_MESSAGE: "${{ env.GITHUB_ACTOR }} your last CI just Failed."
