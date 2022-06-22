@@ -5,7 +5,7 @@ jobs:
     name: Slack Notification
     runs-on: ubuntu-latest
     env:
-      GITHUB_ACTOR: ${{ env.GITHUB_ACTOR }}
+      GITHUB_ACTOR: ${{ GITHUB_ACTOR }}
     steps:
       - uses: actions/checkout@v2
 #      - name: "Set GITHUB_ACTOR"
