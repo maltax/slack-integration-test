@@ -16,4 +16,4 @@ jobs:
           SLACK_USERNAME: "CI-Checker"
           SLACK_COLOR: ${{ job.status }}
           SLACK_ICON: https://www.laboutiqueofficielle.com/favicon-114x114.png
-          SLACK_MESSAGE: '${{ GITHUB_ACTOR }} :rocket:'
+          SLACK_MESSAGE: "${{ GITHUB_ACTOR }} :rocket:"
